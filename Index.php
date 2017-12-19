@@ -29,8 +29,6 @@ echo    '</div>
         </Html>';
 
 
-function order66(){
-    echo '<h1><p style="color: darkviolet">execute ordert 66</p></h1>';
 
-}
+
 ?>
