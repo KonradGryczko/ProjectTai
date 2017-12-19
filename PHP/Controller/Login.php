@@ -4,6 +4,9 @@
  * User: Zjava
  * Date: 2017-12-18
  * Time: 23:06
+ *
+ * przerobić
+ * najlepiej napisać od nowa
  */
 
 class Login
@@ -13,9 +16,9 @@ class Login
     public function __construct()
     {
         if(session_status()==PHP_SESSION_NONE){
-            $this->path=__DIR__.'/../View/LeftNotLogged.php';
+            $this->path= __DIR__ . '/../View/NotLoggedView.php';
             include_once $this->path;
-            $form=new LeftNotLogged();
+            $form=new NotLoggedView();
             $this->isLogged="false";
             echo $form->makeForm();
         }
