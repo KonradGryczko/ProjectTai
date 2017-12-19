@@ -8,18 +8,18 @@
 
 class MainController
 {
-    public function __construct()
+    public function __construct($where)
     {
         if(empty($_POST)){//Czy wciśnieto jakiś przycisk
-            include_once 'Login.php';
-            $a=new Login();
+            include_once 'isLogedService.php';
+            $a=new isLoggedService($where);
         }
         else {
-            if(!empty($_POST['signUp'])){
-                echo "Radio Ma ryja";
+            if(!empty($_POST['signUp'])){//Wciśnięto rejestracja
+
             }
-            if(!empty($_POST['log'])){
-                echo print_r($_POST);
+            if(!empty($_POST['log'])){//Wciśnieto zalogój
+
             }
         }
     }

@@ -5,7 +5,7 @@
  * Date: 2017-12-18
  * Time: 21:27
  */
-
+include_once 'PHP/Controller/MainController.php';
 echo    '<Html>
         <head>
             <title>tytół</title>
@@ -13,21 +13,16 @@ echo    '<Html>
         </head>';
 echo    '<body><div class="contener"> ';
 echo    '<div class="baner">';
-
-echo    '</div>
-        <div class="main">';
-    order66();
-    print_r($_POST);
-    print_r($_GET);
-    echo "miał";
+    $LogControl=new MainController(1);
 echo    '</div>
         <div class="left">';
-    include_once 'PHP/Controller/MainController.php';
-    $LogControl=new MainController();
+$LogControl=new MainController(2);
+echo    '</div>
+        <div class="main">';
+    $LogControl=new MainController(3);
 echo    '</div>
         <div class="bottom">';
-
-
+    $LogControl=new MainController(4);
 echo    '</div>
         </div>
         </body>

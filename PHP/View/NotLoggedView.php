@@ -21,7 +21,7 @@ class NotLoggedView
     {
         $this->bannerForm="
             <p>Jakiś tam baner</p>
-            ";
+        ";
         $this->leftForm="        
             <form action='' method='post'> 
             Loggin:<br>
@@ -48,11 +48,20 @@ class NotLoggedView
 
     }
 
-    public function makeForm(){
-        return $this->leftForm;
+    function getBannerForm(){
+        return $this->bannerForm;
     }
+
     function getLeftForm(){
         return $this->leftForm;
+    }
+
+    function getMainForm(){
+        return $this->mainForm;
+    }
+
+    function getBottomForm(){
+        return $this->bottomForm;
     }
 
 }

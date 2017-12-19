@@ -6,7 +6,7 @@
  * Time: 00:11
  */
 
-class LeftLogged
+class LoggedFormUser
 {
 
     function makeForm($id){
