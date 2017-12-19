@@ -1,0 +1,55 @@
+.contener{
+    /*położenie*/
+    width: 80%;
+    height: 1290px;
+    position: absolute;
+    left: 10%;
+    top: 0px;
+
+    /*kolorystyka*/
+    background: dimgrey;
+}
+
+.baner{
+    background: rebeccapurple;
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    left: px;
+    top: 0px;
+}
+
+.left{
+    background: aliceblue;
+    height: 800px;
+    width: 24%;
+    position: absolute;
+    left: 1%;
+    top: 320px;
+}
+
+.main{
+    background: aqua;
+    height: 800px;
+    width: 71%;
+    position: absolute;
+    left: 27%;
+    top: 320px;
+
+    /*font*/
+    padding-left: 1%;
+
+}
+
+.bottom{
+    background: coral;
+    height: 150px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 1140px;
+}
+
+.left input[name="login"]{
+    background: white;
+}
