@@ -8,10 +8,13 @@
 
 class MainController
 {
+    private $path;
     public function __construct($where)
     {
+
         if(empty($_POST)){//Czy wciśnieto jakiś przycisk
-            include_once 'isLogedService.php';
+            $this->path=__DIR__.'/../Service/isLoggedService.php';
+            include_once $this->path;
             $a=new isLoggedService($where);
         }
         else {

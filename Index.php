@@ -13,16 +13,19 @@ echo    '<Html>
         </head>';
 echo    '<body><div class="contener"> ';
 echo    '<div class="baner">';
-    $LogControl=new MainController(1);
+    $View=new MainController(1);
 echo    '</div>
         <div class="left">';
-$LogControl=new MainController(2);
+$View=new MainController(2);
+include_once 'PHP/Model/UserModel.php';
+$z=new UserModel("PIWO");
+
 echo    '</div>
         <div class="main">';
-    $LogControl=new MainController(3);
+    $View=new MainController(3);
 echo    '</div>
         <div class="bottom">';
-    $LogControl=new MainController(4);
+    $View=new MainController(4);
 echo    '</div>
         </div>
         </body>

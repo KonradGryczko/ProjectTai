@@ -2,15 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Zjava
- * Date: 2017-12-18
- * Time: 23:08
- *
- * Do przerobienia
- * forma tworzona w konstruktorze
- * zwraca widok w metodach
+ * Date: 2017-12-21
+ * Time: 09:58
  */
 
-class NotLoggedView
+class SignUpView
 {
     private $bannerForm;
     private $leftForm;
@@ -43,10 +39,7 @@ class NotLoggedView
             Hasło<br>
             <input type='password' name='pass'><br>
             <input type='submit' name='log' value='Log_In'><br> 
-            </form>
-            <form action='' method='post'>
-            <input type='submit' name='signUp' value='sign'><br>
-            </form>
+            </form>            
         ";
     }
 

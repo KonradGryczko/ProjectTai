@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Zjava
- * Date: 2017-12-18
- * Time: 23:39
+ * Date: 2017-12-19
+ * Time: 12:52
  */
 
-class SignUp
+class ErrorView
 {
 
 }

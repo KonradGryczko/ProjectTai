@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Zjava
- * Date: 2017-12-19
- * Time: 00:11
+ * Date: 2017-12-21
+ * Time: 09:55
  */
 
-class LoggedFormUser
+class LoggedFormAdmin
 {
 
     private $bannerForm;
@@ -53,7 +53,7 @@ class LoggedFormUser
                         <form action='' method='post'>
                             <input type='submit' value='Wydażenia' name='event'>
                             <br>
-                            <input type='submit' value='Dodaj Wydażenie' name='add'>
+                            <input type='submit' value='Lista Użytkowników' name='list'>
                             <br>
                             <input type='submit' value='Wylogój' name='logOff'>
                         </form>
