@@ -29,9 +29,10 @@ class NotLoggedView
 
     private function setBanner()
     {
+        $p="<h1>adadad</h1>";
         $this->bannerForm = "
             <p>Jakiś tam baner</p>
-        ";
+        ".strip_tags($p);
     }
 
     private function setLeft()
@@ -43,9 +44,8 @@ class NotLoggedView
             Hasło<br>
             <input type='password' name='pass'><br>
             <input type='submit' name='log' value='Log_In'><br> 
-            </form>
-            <form action='' method='post'>
             <input type='submit' name='signUp' value='sign'><br>
+            
             </form>
         ";
     }

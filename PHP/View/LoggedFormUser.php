@@ -14,12 +14,22 @@ class LoggedFormUser
     private $mainForm;
     private $bottomForm;
     private $login;
-    public function __construct()
+    public function __construct($whatShow=0)
     {
         $this->login=$_SESSION['login'];
         $this->setBanner();
         $this->setLeft();
-        $this->setMain();
+        switch ($whatShow) {
+            case 1:
+                $this->setMainAsTable();
+                break;
+            case 2:
+                $this->addEvent();
+                break;
+            default:
+                $this->setMain();
+
+        }
         $this->setBottom();
 
     }
@@ -74,11 +84,79 @@ class LoggedFormUser
         ";
     }
 
+    private function setMainAsTable()
+    {
+        include_once "../Service/DbService.php";
+        include_once "../Service/FileManagerService.php";
+
+        $db=new DbService("tai");
+        $result=$db->getMyEvent($this->login);
+        $file=new FileManagerService($this->login);
+        $this->mainForm="
+            <table border='1'>
+                <tr>
+                    <td>
+                        Nazwa
+                    </td>
+                    <td>
+                        Data
+                    </td>
+                    <td>
+                        Miejsce
+                    </td>
+                    <td>
+                        Wybierz
+                    </td>
+                </tr>";
+                for($i=0;$i<=sizeof($result);$i++){
+                    $this->mainForm.="<tr>
+                        <td>".
+                            $result['name']."
+                        </td>
+                        <td>".
+                            $result['Date']."
+                        </td>
+                        <td>".
+                            $result['place']."
+                        </td>
+                        <td>".
+                            $file->readFile($result['id']);
+                            $this->mainForm.="<input type='radio' value='".$i."' name='select''>";
+                        $this->mainForm.="
+                        </td>
+                    </tr>";
+                }
+            $this->mainForm.="<tr><form action='' method='post'>
+                <td>
+                    <input type='submit' name='edit'>
+                </td><td>
+                    <input type='submit' name='detail'> 
+    
+                </td></form></f/tr></table>
+        ";
+    }
+
     private function setBottom(){
         $this->bottomForm="
             <p>
             Stopka nigdy nie wiem co tu ma być
             </p>
+        ";
+    }
+
+    private function addEvent(){
+        $this->mainForm="
+        <form action='' method='post'>
+        Nazwa:<br>
+        <input type='text' name='name' value='Tytół wydażenia'><br>
+        Data:<br>
+        <input type='date' name='date' value='2017-07-07'><br>
+        Miejsce:<br>
+        <input type='text' name='address' value='middle of nowhere'><br>
+        Opis:<br>
+        <textarea rows='5' cols='50' name='describe'>Podaj opis wydaraenia</textarea><br>
+        <input type='submit' name='SaveEvent' value='Zapisz'><br>
+        </form>
         ";
     }
 
@@ -99,4 +177,8 @@ class LoggedFormUser
     function getBottomForm(){
         return $this->bottomForm;
     }
+
+
+
+
 }
