@@ -30,5 +30,14 @@ class FileManagerService
         return $text;
     }
 
+    public function addDirection(){
+        if(!is_dir(__DIR__."/../../Resource/$this->login"))
+        $a=mkdir(__DIR__."/../../Resource/$this->login",0777,true);
+    }
+
+    public function coppyAvatar(){
+        if(!file_exists(__DIR__."/../../Resource/$this->login/download.png"))
+            copy(__DIR__."/../../Resource/img/download.png",__DIR__."/../../Resource/$this->login/download.png");
+    }
 
 }

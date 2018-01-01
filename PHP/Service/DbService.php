@@ -43,7 +43,10 @@ class DbService
             return 0;
         }
         else
-            return $val[0]['level'];
+            foreach($val as $row)
+            {
+               return $row['level'];
+            }
     }
     //sprawdź czy login zajęty
     public function isLoginTaken($login){

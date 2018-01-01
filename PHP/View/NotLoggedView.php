@@ -29,7 +29,8 @@ class NotLoggedView
 
     private function setBanner()
     {
-        $p="<h1>adadad</h1>";
+
+        $p=getcwd();
         $this->bannerForm = "
             <p>Jakiś tam baner</p>
         ".strip_tags($p);
@@ -55,7 +56,7 @@ class NotLoggedView
         $this->mainForm = "
             <H1>Witaj</H1>
             <p>
-                Stromna realizuje zażądzanie zdarzeniami
+               Nie Jesteś zalogowany
             </p>
         ";
     }

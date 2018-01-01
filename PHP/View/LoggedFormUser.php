@@ -49,7 +49,7 @@ class LoggedFormUser
             <table>
                 <tr>
                     <td>
-                        <img src='/Resorce/".$this->login."/download.png' alt='Awatar' height='40' width='40'>
+                        <img src='Resource/".$this->login."/download.png' alt='Awatar' height='40' width='40'>
                     </td>
                     <td>
                         <p>

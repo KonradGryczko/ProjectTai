@@ -15,6 +15,7 @@ class AddUserServices
 
     private $filter;
     private $db;
+    private $file;
     private $path;
 
     public function __construct($where)
@@ -27,6 +28,8 @@ class AddUserServices
         $this->path= __DIR__ . '/../View/AnyView.php';
         include_once $this->path;
         $this->path=__DIR__."/DbService.php";
+        include_once $this->path;
+        $this->path=__DIR__."/FileManagerService.php";
         include_once $this->path;
         $form=new AnyView();
         $this->db=new DbService("tai");
@@ -113,11 +116,17 @@ class AddUserServices
 
     private function fackEmallAndAddIfGood()
     {
+
         $this->fackEmall();
+        $this->file=new FileManagerService($this->login);
         if($this->anyError==0){
             $this->db->addUser($this->login,$this->email,$this->password);
+            $this->file->addDirection();
+            $this->file->coppyAvatar();
         }
     }
+
+
 
 
 }
