@@ -87,10 +87,9 @@ class DbService
     //pobież liste wydażeń
     public function getMyEvent($login)
     {
-        $sql="Select * from event JOIN user ON user.id=event.`id-user` WHERE user.nick like'$login'";
+        $sql="Select * from event JOIN user ON user.Id=event.`id_user` WHERE user.nick like'$login'";
         $stm=$this->conn->prepare($sql);
         $stm->execute();
-        $result = $stm->setFetchMode(PDO::FETCH_ASSOC);
         $val=$stm->fetchAll();
         return $val;
     }

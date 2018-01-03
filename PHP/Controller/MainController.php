@@ -29,7 +29,9 @@ class MainController
                 new LogMeInServices($where);
             }
             if(!empty($_POST['event'])){
-
+                $this->path=__DIR__.'/../Service/EventServices.php';
+                include_once $this->path;
+                new EventServices($where);
             }
             if(!empty($_POST['add'])){
 
@@ -39,7 +41,6 @@ class MainController
             }
             if(!empty($_POST['SaveEvent'])){
                 $this->path=__DIR__."/../Service/AddEvent.php";
-
                 new AddEvent();
             }
             if(!empty($_POST['edit'])){

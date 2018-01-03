@@ -40,7 +40,7 @@ class LoggedFormUser
     {
         $this->bannerForm = "
             <p>Jakiś tam baner</p>
-        ";
+        ".session_status();
     }
 
     private function setLeft()
@@ -81,17 +81,14 @@ class LoggedFormUser
                 Cieszę się że znowu się zalogowałeś 
                 Mam nadzieje że ci się tu podoba
             </p>
-        ";
+        ".session_status();
     }
 
     private function setMainAsTable()
     {
-        include_once "../Service/DbService.php";
-        include_once "../Service/FileManagerService.php";
-
-        $db=new DbService("tai");
-        $result=$db->getMyEvent($this->login);
-        $file=new FileManagerService($this->login);
+        include_once __DIR__.'/../Model/EventModel.php';
+        $mod=new EventModel($this->login);
+        $result=$mod->getAllEvent();
         $this->mainForm="
             <table border='1'>
                 <tr>
@@ -108,23 +105,13 @@ class LoggedFormUser
                         Wybierz
                     </td>
                 </tr>";
-                for($i=0;$i<=sizeof($result);$i++){
-                    $this->mainForm.="<tr>
-                        <td>".
-                            $result['name']."
-                        </td>
-                        <td>".
-                            $result['Date']."
-                        </td>
-                        <td>".
-                            $result['place']."
-                        </td>
-                        <td>".
-                            $file->readFile($result['id']);
-                            $this->mainForm.="<input type='radio' value='".$i."' name='select''>";
-                        $this->mainForm.="
-                        </td>
-                    </tr>";
+                foreach ($result as $row){
+                    $this->mainForm.="
+                        <tr>
+                            <td>".$row["Name"]."</td>
+                            <td>".$row["Date"]."</td>
+                            <td>".$row["Place"]."</td>
+                            <td><input type='radio' name='option' value='.".$row["id"]."'></td></tr>";
                 }
             $this->mainForm.="<tr><form action='' method='post'>
                 <td>
@@ -132,7 +119,7 @@ class LoggedFormUser
                 </td><td>
                     <input type='submit' name='detail'> 
     
-                </td></form></f/tr></table>
+                </td></form></tr></table>
         ";
     }
 

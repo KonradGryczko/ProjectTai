@@ -33,7 +33,7 @@ class NotLoggedView
         $p=getcwd();
         $this->bannerForm = "
             <p>Jakiś tam baner</p>
-        ".strip_tags($p);
+        ";
     }
 
     private function setLeft()
@@ -57,6 +57,7 @@ class NotLoggedView
             <H1>Witaj</H1>
             <p>
                Nie Jesteś zalogowany
+               
             </p>
         ";
     }

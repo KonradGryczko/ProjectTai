@@ -65,8 +65,6 @@ class LogMeInServices
             session_start();
             $_SESSION['login']=$this->login;
         }
-        else {
-            if(!session_id()=="")session_destroy();}
     }
 
 

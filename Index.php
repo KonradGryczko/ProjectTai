@@ -5,6 +5,7 @@
  * Date: 2017-12-18
  * Time: 21:27
  */
+session_start();
 include_once 'PHP/Controller/MainController.php';
 echo    '<Html>
         <head>

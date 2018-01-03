@@ -23,8 +23,8 @@ class EventModel
     public function __construct($login=null)
     {
         $this->user=$login;
-        include_once '../Service/DbService.php';
-        include_once '../Service/FileManagerService.php';
+        include_once __DIR__.'/../Service/DbService.php';
+        include_once __DIR__.'/../Service/FileManagerService.php';
 
         $this->db=new DbService("tai");
 
@@ -34,7 +34,7 @@ class EventModel
 
 
     public  function getAllEvent(){
-        $this->result=$this->db->getMyEvent($this->user);
+        return $this->result=$this->db->getMyEvent($this->user);
     }
 
     public function getOneEvent($id){
