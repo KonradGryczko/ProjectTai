@@ -52,4 +52,21 @@ class FilterService
         }
         else return null;
     }
+
+    //logowanie
+    public function checkLoginIsCorrectLogin($login){
+        if(preg_match('/^([A-Za-z]{1})([A-Za-z0-9]{1,30})$/D', $login))
+            return true;
+        else return false;
+    }
+
+
+
+    public function checkPasswordIsCorrectLogIn($password)
+    {
+        if (preg_match('/^([A-Za-z0-9]{6,24})/D', $password)) {
+            return true;
+        }
+        else return false;
+    }
 }

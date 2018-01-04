@@ -6,7 +6,9 @@
  * Time: 21:27
  */
 session_start();
+
 include_once 'PHP/Controller/MainController.php';
+$whatToShow=new MainController();
 echo    '<Html>
         <head>
             <title>tytół</title>
@@ -14,19 +16,20 @@ echo    '<Html>
         </head>';
 echo    '<body><div class="contener"> ';
 echo    '<div class="baner">';
-    $View=new MainController(1);
+    $whatToShow->getBanner();
+
 echo    '</div>
         <div class="left">';
-$View=new MainController(2);
-include_once 'PHP/Model/UserModel.php';
-$z=new UserModel("PIWO");
+    $whatToShow->getLeft();
 
 echo    '</div>
         <div class="main">';
-    $View=new MainController(3);
+    $whatToShow->getMain();
+
 echo    '</div>
         <div class="bottom">';
-    $View=new MainController(4);
+    $whatToShow->getBottom();
+
 echo    '</div>
         </div>
         </body>

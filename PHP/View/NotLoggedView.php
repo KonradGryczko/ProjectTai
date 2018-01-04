@@ -43,7 +43,7 @@ class NotLoggedView
             Loggin:<br>
             <input name='login' value=''><br>
             Hasło<br>
-            <input type='password' name='pass'><br>
+            <input type='password' name='password'><br>
             <input type='submit' name='log' value='Log_In'><br> 
             <input type='submit' name='signUp' value='sign'><br>
             

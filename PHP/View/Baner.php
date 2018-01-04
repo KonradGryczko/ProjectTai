@@ -8,5 +8,16 @@
 
 class Baner
 {
+    private $bannerForm;
+
+    function Banner()
+    {
+        $this->bannerForm = "
+            <p>Jakiś tam baner</p>
+        ";
+
+        return $this->bannerForm;
+    }
+
 
 }

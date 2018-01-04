@@ -14,7 +14,7 @@ class DbService
     private $password;
     private $conn;
 
-    public function __construct($dbname)
+    public function __construct($dbname="tai")
     {
         $this->dbName=$dbname;
         $this->serverName = "localhost";
