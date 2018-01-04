@@ -49,7 +49,7 @@ class LeftService
         $db = new DbService("tai");
         $login = strip_tags($_POST['login']);
         $password = strip_tags($_POST['password']);
-        $db->addUser($login,$_POST['email'],$password);
+        $db->addUser($login,$_POST['email'],md5($password));
     }
 
 
