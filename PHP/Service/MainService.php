@@ -28,9 +28,15 @@ class MainService
         return $result;
     }
 
-    function getMyOneEvent($id){
-        $result=$this->db->getEventById();
+    function getMyOneEventDb($id){
+        $result=$this->db->getEventById($id);
         return $result;
+    }
+    function getMyOneEventFile($id){
+
+        $result=$this->file->readFile($_POST['element']);
+        return $result;
+
     }
 
 

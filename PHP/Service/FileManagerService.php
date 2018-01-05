@@ -23,11 +23,14 @@ class FileManagerService
 
     public function readFile($id)
     {
-        $file=fopen("../../Resource/'$this->login'/$id","r");
-        $text=fopen($file,"r");
+        $result=null;
+        $file=fopen(__DIR__."/../../Resource/".$this->login."/".$id.".txt","r");
+        while (!feof($file))
+            $result.=fgets($file);
+
         fclose($file);
 
-        return $text;
+        return $result;
     }
 
     public function addDirection(){
@@ -38,6 +41,10 @@ class FileManagerService
     public function coppyAvatar(){
         if(!file_exists(__DIR__."/../../Resource/$this->login/download.png"))
             copy(__DIR__."/../../Resource/img/download.png",__DIR__."/../../Resource/$this->login/download.png");
+    }
+
+    public function createEventFile($id){
+        $file=fopen(__DIR__."/../../Resource/".$this->login."/".$id.".txt","w");
     }
 
 }

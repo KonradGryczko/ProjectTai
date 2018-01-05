@@ -9,8 +9,6 @@
 class MainController
 {
 
-    private $path;
-    private $post;
     //elementy widoku
     private $baner;
     private $left;
@@ -32,7 +30,7 @@ class MainController
         include_once __DIR__ . "/../Service/LeftService.php";
         include_once __DIR__."/../Service/MainService.php";
         $leftService=new LeftService();
-        if(session_status()==PHP_SESSION_NONE) $mainService=new MainService();
+        $mainService=new MainService();
 
         switch (true){
         //przed Zalogowaniem
@@ -76,25 +74,35 @@ class MainController
                 //Wciśnieto Event
             case isset($_POST['event']):
                 $this->left=$left->Logged($_SESSION['login']);
-                $this->main=$main->LoggedAllEvent();
+                $this->main=$main->LoggedAllEvent($mainService->getMyEvent($_SESSION['login']));
                 break;
                 //wciśnięto chęć dodania Eventu
             case isset($_POST['add']):
                 $this->left=$left->Logged($_SESSION['login']);
                 $this->main=$main->LoggedAddEvent();
                 break;
+                //dodaj event
+            case isset($_POST['new']):
+
+                break;
                 //szczeguły
             case isset($_POST['detail']):
-
+                $this->left=$left->Logged($_SESSION['login']);
+                $this->main=$main->LoggedExactEvent($mainService->getMyOneEventDb($_POST['element']),$mainService->getMyOneEventFile($_POST['element']));
                 break;
                 //edytuj Event
             case isset($_POST['edit']):
 
                 break;
-                //dodaj event
-            case isset($_POST['new']):
+                //zatwierdź edycje
+            case isset($_POST['accept']):
 
                 break;
+                //zatwierdź edycje
+            case isset($_POST['delete']):
+
+                break;
+
                 //Wciśnieto wylogój
             case isset($_POST['logOff']):
                 $this->left=$left->NotLogged();
