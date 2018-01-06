@@ -55,7 +55,6 @@ class Left
             </table>
         ";
         return $this->leftForm;
-
     }
 
     //zalogowany

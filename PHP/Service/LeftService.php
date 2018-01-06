@@ -43,7 +43,6 @@ class LeftService
         else return 1;
     }
 
-
     public function AddUser(){
         include_once 'DbService.php';
         include_once 'FileManagerService.php';

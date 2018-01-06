@@ -19,5 +19,4 @@ class Baner
         return $this->bannerForm;
     }
 
-
 }

@@ -33,6 +33,7 @@ class MainService
         $result=$this->db->getEventById($id);
         return $result;
     }
+
     function getMyOneEventFile($id){
 
         $result=$this->file->readFile($_POST['element']);
@@ -64,7 +65,5 @@ class MainService
         $this->db->deleteEvent($id);
         $this->file->deleteFile($id);
     }
-
-
 
 }
