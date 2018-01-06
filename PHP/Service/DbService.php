@@ -105,8 +105,29 @@ class DbService
         return $val;
     }
 
-    public function creatEvent()
+    public function createEvent($login)
     {
+        $sql="SELECT * FROM user WHERE nick LIKE '$login'";
+        $stm=$this->conn->prepare($sql);
+        $stm->execute();
+        $result = $stm->setFetchMode(PDO::FETCH_ASSOC);
+        $val=$stm->fetchAll();
+        $sql="INSERT INTO `event` (`id`, `id_user`, `Name`, `Place`, `Date`) VALUES (NULL, '".$val[0]['Id']."', '".$_POST["name"]."', '".$_POST["place"]."', '".$_POST["date"   ]."');";
+        $stm=$this->conn->prepare($sql);
+        $stm->execute();
+        return $this->conn->lastInsertId();
+    }
 
+    public function deleteEvent($id){
+        $sql="DELETE FROM `event` WHERE `event`.`id` = $id";
+        $stm=$this->conn->prepare($sql);
+        $stm->execute();
+    }
+
+    public function updateEvent($id,$name,$place,$date){
+        $sql="UPDATE `event` SET `Name` = '$name', `Place` = '$place', `Date` = '$date' WHERE `event`.`id` = $id;";
+        $stm=$this->conn->prepare($sql);
+        $stm->execute();
+        return $id;
     }
 }

@@ -20,7 +20,8 @@ class MainService
         include_once 'FileManagerService.php';
         $this->filter = new FilterService();
         $this->db = new DbService("tai");
-        $this->file=new FileManagerService($_SESSION['login']);
+        if(isset($_SESSION['login']))$this->file=new FileManagerService($_SESSION['login']);
+        else $this->file=new FileManagerService();
     }
 
     function getMyEvent($login){
@@ -39,6 +40,30 @@ class MainService
 
     }
 
+    function checkEvent(){
+
+        if($this->filter->checkTitleIsCorrect($_POST['name'])) return "name";
+        if($this->filter->checkPlaceIsCorrect($_POST['place'])) return "place";
+        return "something";
+    }
+
+    function addEvent(){
+        $this->file->createEventFile($this->db->createEvent($_SESSION['login']));
+    }
+
+    function updateEvent(){
+        $this->file->createEventFile($this->db->updateEvent($_POST['id'],$_POST['name'],$_POST['place'],$_POST['date']));
+    }
+
+    function rules(){
+        $rules=$this->file->rules();
+        return  $rules;
+    }
+
+    function deleteEvent($id){
+        $this->db->deleteEvent($id);
+        $this->file->deleteFile($id);
+    }
 
 
 

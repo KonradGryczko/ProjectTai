@@ -14,21 +14,15 @@ class FilterService
     public function checkPlaceIsCorrect($place)
     {
         if(preg_match('/^([A-Za-z]{3,30})$/D', $place))
-            return $place;
-        else return null;
+            return false;
+        else return true;
     }
 
     public function checkTitleIsCorrect($title)
     {
-        if(preg_match('/^([A-Za-z]{1})([A-Za-z0-9]{1-30})$/D', $title))
-            return $title;
-        else return null;
-    }
-    public function checkDateIsCorrect($date)
-    {
-        if(preg_match('/^([A-Za-z]{3,30})$/D',$date))
-            return $date;
-        else return null;
+        if(preg_match('/^([A-Za-z]{1})([A-Za-z0-9]{1,30})$/D', $title))
+            return false;
+        else return true;
     }
 
     //rejestracja

@@ -15,7 +15,7 @@ class FileManagerService
      * FileManagerService constructor.
      * @param $login
      */
-    public function __construct($login)
+    public function __construct($login=null)
     {
         $this->login = $login;
     }
@@ -25,6 +25,22 @@ class FileManagerService
     {
         $result=null;
         $file=fopen(__DIR__."/../../Resource/".$this->login."/".$id.".txt","r");
+        while (!feof($file))
+            $result.=fgets($file);
+
+        fclose($file);
+
+        return $result;
+    }
+
+    function deleteFile($id){
+        unlink(__DIR__."/../../Resource/".$this->login."/".$id.".txt");
+    }
+
+    public function rules()
+    {
+        $result=null;
+        $file=fopen(__DIR__ . "/../../Resource/rules.txt","r");
         while (!feof($file))
             $result.=fgets($file);
 
@@ -45,6 +61,8 @@ class FileManagerService
 
     public function createEventFile($id){
         $file=fopen(__DIR__."/../../Resource/".$this->login."/".$id.".txt","w");
+        fwrite($file,$_POST['describe']);
+        fclose($file);
     }
 
 }

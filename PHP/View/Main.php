@@ -115,41 +115,107 @@ class Main
         return $this->mainForm;
     }
 
-    public function LoggedAddEvent($error=null){
-        $this->mainForm="
+    public function LoggedExactEventForEdit($result,$describe)
+    {
+        $this->mainForm = "
             <form action='' method='post'>
+            
                 Nazwa:<BR>
-                <input type='text' name='name' value=''><br>
+                <input type='text' name='name' value='" . $result[0]['Name'] . "'><br>
+                
                 Place:<br>
-                <input type='text' name='place' value=''><br>
+                <input type='text' name='place' value='" . $result[0]['Place'] . "'><br>
                 Date:<br>
-                <input type='date' name='date'><br>
+                <input type='date' name='date' value='" . date($result[0]['Date']) . "'><br>
                 Opis:<br>
-                <textarea name='describe' rows='8' cols='50' value=''></textarea><br>
-                <input type='submit' name='new' value='Dodaj'>
+                <textarea name='describe' rows='8' cols='50'>$describe</textarea><br>
+                <input type='submit' name='accept' value='Aktualizuj'>
+                <input hidden type='text'  name='id' value='" . $_POST['element'] . "'>
             </form>
         ";
         return $this->mainForm;
     }
 
+    public function LoggedAcceptEvent($error=null){
+        $this->mainForm="
+
+            <form action='' method='post'>
+            
+                Nazwa:<BR>";
+        if($error=="name")$this->mainForm.="
+                <input type='text' name='name' value='Error'><br>";
+        elseif(isset($_POST['name'])) $this->mainForm.="<input type='text' name='name' value='".$_POST['name']."'><br>";
+        else $this->mainForm.="<input type='text' name='name' ><br>";
+        $this->mainForm.="Place:<br>";
+        if($error=="place")$this->mainForm.="
+                <input type='text' name='place' value='Error'><br>";
+        elseif(isset($_POST['place'])) $this->mainForm.="<input type='text' name='place' value='".$_POST['place']."'><br>";
+        else $this->mainForm.="<input type='text' name='place'><br>";
+        $this->mainForm.="Date:<br>";
+        if(isset($_POST['date']))$this->mainForm.="
+                <input type='date' name='date' value='".$_POST['date']."'><br>";
+        else $this->mainForm.="<input type='date' name='date' ><br>";
+        $this->mainForm.="Opis:<br>";
+        if(isset($_POST['describe']))$this->mainForm.="
+                <textarea name='describe' rows='8' cols='50' value=''>".$_POST['describe']."</textarea><br>";
+        else $this->mainForm.="<textarea name='describe' rows='8' cols='50' value=''></textarea><br>";
+                $this->mainForm.="<input type='submit' name='accept' value='Aktualizuj'>
+                <input hidden type='text'  name='id' value='" . $_POST["id"] . "'>
+            </form>
+        ";
+        return $this->mainForm;
+    }
+
+    public function LoggedAddEvent($error=null){
+        $this->mainForm="
+            <form action='' method='post'>
+                Nazwa:<BR>";
+        if($error=="name")$this->mainForm.="
+                <input type='text' name='name' value='Error'><br>";
+        elseif(isset($_POST['name'])) $this->mainForm.="<input type='text' name='name' value='".$_POST['name']."'><br>";
+        else $this->mainForm.="<input type='text' name='name' ><br>";
+                $this->mainForm.="Place:<br>";
+        if($error=="place")$this->mainForm.="
+                <input type='text' name='place' value='Error'><br>";
+        elseif(isset($_POST['place'])) $this->mainForm.="<input type='text' name='place' value='".$_POST['place']."'><br>";
+        else $this->mainForm.="<input type='text' name='place'><br>";
+                $this->mainForm.="Date:<br>";
+        if(isset($_POST['date']))$this->mainForm.="
+                <input type='date' name='date' value='".$_POST['date']."'><br>";
+        else $this->mainForm.="<input type='date' name='date' ><br>";
+                $this->mainForm.="Opis:<br>";
+        if(isset($_POST['describe']))$this->mainForm.="
+                <textarea name='describe' rows='8' cols='50' value=''>".$_POST['describe']."</textarea><br>";
+        else $this->mainForm.="<textarea name='describe' rows='8' cols='50' value=''></textarea><br>";
+               $this->mainForm.="<input type='submit' name='new' value='Dodaj'>
+            </form>
+        ";
+        return $this->mainForm;
+    }
+
+    public function nothingToShow(){
+        $this->mainForm="Nothing to show";
+        return $this->mainForm;
+    }
+
     //Rejestracja
-    public function SignUp(){
-
+    public function SignUp($rules){
+        $this->mainForm="<h1>WItaj</h1><br><br>$rules";
         return $this->mainForm;
     }
 
-    public function SignUpErrorLoginOrPassword(){
-
+    public function SignUpErrorLoginOrPassword($rules){
+        $this->mainForm="<h1>WItaj</h1><br>Login i hasło nie zgodny z zasadami<br>$rules";
         return $this->mainForm;
     }
 
-    public function SignUpErrorAccountExist(){
-
+    public function SignUpErrorAccountExist($rules){
+        $this->mainForm="<h1>WItaj</h1><br>Takie konto już istnieje<br>$rules";
         return $this->mainForm;
     }
 
-    public function SignUpNoError(){
-
+    public function SignUpNoError($rules){
+        $this->mainForm="<h1>WItaj</h1><br><br>Włąśnie się zarejstrowałeś";
         return $this->mainForm;
     }
 
